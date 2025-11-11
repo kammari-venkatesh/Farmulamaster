@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, Lightbulb } from "lucide-react";
 import "./FinalReviewPage.css";
 
 const FinalReviewPage = () => {
@@ -13,8 +13,32 @@ const FinalReviewPage = () => {
   const total = 6;
   const percentage = Math.round((score / total) * 100);
 
+  // ✅ Function to dynamically generate learning tips
+  const generateLearningTip = (res) => {
+    const question = res.questionText.toLowerCase();
+    const baseTip =
+      "Remember: mistakes are part of learning. Take a moment to review calmly before trying again.";
+
+    if (question.includes("interest") || question.includes("si") || question.includes("ci"))
+      return `${baseTip} Focus on understanding how principal, rate, and time interact in the Simple and Compound Interest formulas. Practice short word problems daily.`;
+    if (question.includes("profit") || question.includes("loss"))
+      return `${baseTip} Revisit Profit & Loss concepts — understand relationships between CP, SP, and profit%. Use real-life examples to connect the math.`;
+    if (question.includes("triangle") || question.includes("pythagoras"))
+      return `${baseTip} Review the Pythagoras theorem: visualize right triangles, and solve using a² + b² = c² with small integer sides (3,4,5).`;
+    if (question.includes("formula") || question.includes("area"))
+      return `${baseTip} Focus on formula recognition — rewrite each key geometry formula daily until it feels natural.`;
+    if (question.includes("energy") || question.includes("mass"))
+      return `${baseTip} Review Einstein’s mass-energy equivalence (E=mc²). Watch a short animation explaining how energy and mass are interchangeable.`;
+    if (question.includes("law") || question.includes("ohm") || question.includes("force"))
+      return `${baseTip} Revise physics relationships — connect formulas to real-world scenarios (e.g., voltage, resistance, and force).`;
+
+    // default fallback tip
+    return `${baseTip} Try rephrasing the question in your own words — this helps reveal what concept needs attention.`;
+  };
+
   return (
     <div className="final-container">
+      {/* HEADER */}
       <motion.div
         className="header-section"
         initial={{ opacity: 0, y: -20 }}
@@ -22,9 +46,7 @@ const FinalReviewPage = () => {
         transition={{ duration: 0.5 }}
       >
         <h1>Quiz Complete!</h1>
-        <p className="subtitle">
-          Here’s how you did. Review your answers to improve.
-        </p>
+        <p className="subtitle">Here’s how you did. Review your answers to improve.</p>
       </motion.div>
 
       {/* SCORE CARD */}
@@ -40,22 +62,14 @@ const FinalReviewPage = () => {
             You scored <strong>{score}</strong> / {total}
           </p>
           <p className="score-sub">
-            Review your answers below to see where you can improve and master
-            the concepts.
+            Review your answers below to see where you can improve and master the concepts.
           </p>
         </div>
 
-        {/* Circular Progress */}
+        {/* Circular progress */}
         <div className="progress-ring">
           <svg width="90" height="90">
-            <circle
-              cx="45"
-              cy="45"
-              r="40"
-              stroke="#e5e7eb"
-              strokeWidth="8"
-              fill="none"
-            />
+            <circle cx="45" cy="45" r="40" stroke="#e5e7eb" strokeWidth="8" fill="none" />
             <motion.circle
               cx="45"
               cy="45"
@@ -124,6 +138,17 @@ const FinalReviewPage = () => {
                     <strong>Explanation:</strong> {res.explanation}
                   </p>
                 </div>
+
+                {/* ✅ Dynamic Learning Tip */}
+                <motion.div
+                  className="learning-tip"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <Lightbulb size={18} color="#facc15" />
+                  <p>{generateLearningTip(res)}</p>
+                </motion.div>
               </motion.div>
             );
           })}

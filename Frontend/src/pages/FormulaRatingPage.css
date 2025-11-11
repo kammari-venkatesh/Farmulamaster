@@ -1,79 +1,88 @@
-body {
-  background-color: #f9fafc;
-  font-family: "Inter", sans-serif;
-}
-
+/* 🌙 Page Layout */
 .formula-rating-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 3rem;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 2rem 1rem;
+  font-family: "Inter", sans-serif;
 }
 
 /* Timer Section */
 .timer-section {
+  width: 100%;
+  max-width: 700px;
   text-align: center;
   margin-bottom: 1.5rem;
-}
-
-.timer-section p {
-  font-size: 0.95rem;
-  color: #334155;
+  font-size: 0.9rem;
+  color: #374151;
   font-weight: 500;
-  margin-bottom: 0.4rem;
 }
 
-/* Formula Card */
+/* Main Formula Card */
 .formula-card {
   background: #ffffff;
-  padding: 2.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
-  max-width: 480px;
-  width: 100%;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 2rem 2.5rem;
   text-align: center;
+  width: 100%;
+  max-width: 650px;
+  transition: all 0.3s ease-in-out;
+}
+
+.formula-card.error-card {
+  padding: 3rem 2rem;
 }
 
 .formula-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #111827;
   margin-bottom: 0.3rem;
 }
 
 .formula-subtext {
-  font-size: 0.95rem;
-  color: #64748b;
-  margin-bottom: 0.3rem;
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
 }
 
+/* Hint Box */
 .formula-hint {
-  font-size: 0.9rem;
-  color: #475569;
-  margin-bottom: 1.2rem;
+  background: #f3f4f6;
+  border-left: 4px solid #2563eb;
+  color: #374151;
+  font-size: 0.95rem;
   font-style: italic;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Formula Box */
 .formula-box {
+  font-weight: 600;
   font-size: 1.2rem;
-  background: #f1f5f9;
-  border-radius: 10px;
   padding: 1rem;
-  margin-bottom: 1.5rem;
-  transition: all 0.4s ease;
+  border-radius: 0.6rem;
+  background: #f9fafb;
+  margin-bottom: 1.2rem;
+  color: #111827;
+  transition: all 0.4s ease-in-out;
 }
 
-.blurred {
-  filter: blur(7px);
+.formula-box.blurred {
   color: transparent;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
   user-select: none;
-  text-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  filter: blur(5px);
 }
 
-.revealed {
-  color: #0f172a;
+.formula-box.revealed {
+  color: #111827;
   filter: none;
 }
 
@@ -81,74 +90,137 @@ body {
 .reveal-btn {
   background-color: #2563eb;
   color: #fff;
-  font-weight: 600;
-  padding: 0.8rem 2rem;
-  border-radius: 10px;
   border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.25s ease-in-out, transform 0.1s;
 }
 
 .reveal-btn:hover {
-  background-color: #1e40af;
+  background-color: #1d4ed8;
 }
 
-/* Divider */
 .divider {
   border: none;
-  height: 1px;
-  background-color: #e2e8f0;
-  margin: 1.5rem 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 1.8rem 0;
 }
 
 /* Rating Section */
 .rating-section p {
   font-size: 0.95rem;
-  color: #475569;
-  margin-bottom: 0.7rem;
+  color: #374151;
+  margin-bottom: 0.8rem;
 }
 
-/* Stars Container */
-.star-rating-container {
+.rating-section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
 }
 
-/* Timer Progress */
-.timer-progress {
-  width: 300px;
-  height: 6px;
-  background-color: #e2e8f0;
-  border-radius: 4px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.timer-bar {
-  height: 100%;
-  background-color: #2563eb;
-  transition: width 1s linear;
-}
-.formula-hint {
-  font-size: 0.9rem;
-  color: #475569;
-  margin-bottom: 1.2rem;
-  background: #f8fafc;
-  border-left: 3px solid #2563eb;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  text-align: left;
-  line-height: 1.4;
-}
-
+/* Loading State */
 .formula-loading {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  color: #475569;
-  font-weight: 500;
-  font-size: 1.1rem;
+  align-items: center;
+  height: 90vh;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loading-box {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 2rem 3rem;
+  text-align: center;
+  width: 320px;
+}
+
+.loading-line {
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: shimmer 1.2s infinite linear;
+  margin-bottom: 0.8rem;
+}
+
+.loading-line.short {
+  width: 70%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Error Card */
+.error-card h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.error-card p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .formula-card {
+    padding: 1.5rem;
+  }
+
+  .formula-title {
+    font-size: 1.3rem;
+  }
+
+  .reveal-btn {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+  }
+
+  .formula-hint {
+    font-size: 0.9rem;
+  }
+}
+
+/* 🪄 Optional - Star Rating Animation Support */
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.star-rating svg {
+  transition: transform 0.25s ease, color 0.2s;
+}
+
+.star-rating svg:hover {
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

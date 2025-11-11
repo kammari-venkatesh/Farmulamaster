@@ -13,7 +13,7 @@ const StarRating = ({ setRating }) => {
 
   return (
     <motion.div
-      className="star-rating-container"
+      className="star-rating"
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -24,6 +24,7 @@ const StarRating = ({ setRating }) => {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 200 }}
+          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
         >
           <FaStar
             size={32}

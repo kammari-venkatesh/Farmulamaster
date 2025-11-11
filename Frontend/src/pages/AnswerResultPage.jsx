@@ -16,7 +16,7 @@ const AnswerResultPage = () => {
   // ✅ Handle Navigation
   const handleNext = () => {
     if (questionCount >= 6) {
-      navigate("/final", { state: { score, results } });
+      navigate("/final", { state: { score, results, topic, quizPath: `/quiz/${topic}` } });
     } else {
       navigate(`/formula/${topic}`, {
         state: { questionCount, score, results },

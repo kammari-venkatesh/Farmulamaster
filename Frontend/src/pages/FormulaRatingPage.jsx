@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import StarRating from "../Components/StarRating";
-import Timer from "../components/Timer";
+import Timer from "../Components/Timer";
 import "./FormulaRatingPage.css";
 
 const FormulaRatingPage = () => {

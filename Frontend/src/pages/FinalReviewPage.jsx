@@ -10,8 +10,8 @@ const FinalReviewPage = () => {
 
   const results = state?.results || [];
   const score = state?.score || 0;
-  // 👇 --- 1. Get 'topic' and 'rating' from state
-  const topic = state?.topic;
+  // 👇 --- 1. Get 'topic' and 'rating' from state with fallback
+  const topic = state?.topic || (results.length > 0 ? results[0]?.topic : "General");
   const rating = state?.rating;
   const total = 6;
   const percentage = Math.round((score / total) * 100);
@@ -37,12 +37,21 @@ const FinalReviewPage = () => {
 
   // ✅ Restart same topic quiz - pass rating and topic
   const handleRestart = () => {
+    console.log("🔄 Restarting with topic:", topic, "rating:", rating);
+    
+    // Make sure topic is valid before navigating
+    if (!topic) {
+      console.error("❌ Topic is undefined, cannot restart quiz");
+      return;
+    }
+    
     navigate(`/formula/${topic}`, {
       state: {
         rating: rating, // Pass the rating back
         questionCount: 0, // Reset quiz state
         score: 0,
         results: [],
+        topic: topic, // Also pass topic in state as backup
       },
     });
   };

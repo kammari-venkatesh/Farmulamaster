@@ -53,6 +53,7 @@ const QuizQuestionPage = () => {
       selectedOption: selected || "None",
       result: resultType,
       explanation: question.explanation,
+      topic: topic, // 👈 Add topic to result
     };
 
     // Debugging log (optional)

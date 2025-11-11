@@ -10,8 +10,9 @@ const FinalReviewPage = () => {
 
   const results = state?.results || [];
   const score = state?.score || 0;
-  const topic = state?.topic || results[0]?.topic || "Unknown";
-  const quizPath = state?.quizPath; // 👈 Get the quizPath from state
+  // 👇 --- 1. Get 'topic' and 'rating' from state
+  const topic = state?.topic;
+  const rating = state?.rating;
   const total = 6;
   const percentage = Math.round((score / total) * 100);
 
@@ -34,10 +35,15 @@ const FinalReviewPage = () => {
     return `${baseTip} Try explaining this topic to a friend — teaching strengthens understanding.`;
   };
 
-  // ✅ Restart same topic quiz - use quizPath to properly reset state
+  // ✅ Restart same topic quiz - pass rating and topic
   const handleRestart = () => {
-    navigate(quizPath || `/quiz/${topic}`, {
-      state: { topic, questionCount: 0, score: 0, results: [] },
+    navigate(`/formula/${topic}`, {
+      state: {
+        rating: rating, // Pass the rating back
+        questionCount: 0, // Reset quiz state
+        score: 0,
+        results: [],
+      },
     });
   };
 

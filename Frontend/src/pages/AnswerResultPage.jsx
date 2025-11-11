@@ -8,7 +8,8 @@ const AnswerResultPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const { topic, score, questionCount, result, results } = state || {};
+  // 👇 --- 1. Get 'rating' from the state
+  const { topic, score, questionCount, result, results, rating } = state || {};
 
   // Ensure graceful fallback
   const resultType = typeof result === "string" ? result : result?.result || "unanswered";
@@ -16,10 +17,24 @@ const AnswerResultPage = () => {
   // ✅ Handle Navigation
   const handleNext = () => {
     if (questionCount >= 6) {
-      navigate("/final", { state: { score, results, topic, quizPath: `/quiz/${topic}` } });
+      // 👇 --- 2. Pass 'topic' and 'rating' to the final page
+      navigate("/final", { 
+        state: { 
+          score, 
+          results, 
+          topic: topic, 
+          rating: rating 
+        } 
+      });
     } else {
+      // 👇 --- 3. Pass 'rating' to the next question page
       navigate(`/formula/${topic}`, {
-        state: { questionCount, score, results },
+        state: { 
+          questionCount, 
+          score, 
+          results, 
+          rating: rating 
+        },
       });
     }
   };

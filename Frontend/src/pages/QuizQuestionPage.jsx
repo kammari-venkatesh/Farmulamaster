@@ -66,6 +66,7 @@ const QuizQuestionPage = () => {
     navigate("/result", {
       state: {
         topic,
+        rating: rating, // 👈 ADD THIS LINE
         score: updatedScore,
         questionCount: questionCount + 1,
         result: newResult,

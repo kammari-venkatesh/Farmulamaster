@@ -30,7 +30,7 @@ const FormulaRatingPage = () => {
   useEffect(() => {
     const fetchFormula = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/questions/${topic}`);
+        const res = await axios.get(`https://farmulamaster.onrender.com/api/questions/${topic}`);
         const data = Array.isArray(res.data) ? res.data : res.data.questions || [];
 
         // Pick only valid formula objects

@@ -19,7 +19,7 @@ const QuizQuestionPage = () => {
   // ✅ Fetch one random question based on rating
   useEffect(() => {
     axios
-      .post("http://localhost:5000/api/questions/quiz", { topic, rating })
+      .post("https://farmulamaster.onrender.com/api/questions/quiz", { topic, rating })
       .then((res) => {
         setQuestion(res.data);
         setLoading(false);

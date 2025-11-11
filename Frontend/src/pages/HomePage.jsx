@@ -11,7 +11,7 @@ const HomePage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/questions/topics")
+      .get("https://farmulamaster.onrender.com/api/questions/topics")
       .then((res) => setTopics(res.data))
       .catch((err) => console.error(err));
   }, []);

@@ -1,0 +1,154 @@
+body {
+  background-color: #f9fafc;
+  font-family: "Inter", sans-serif;
+}
+
+.formula-rating-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+/* Timer Section */
+.timer-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.timer-section p {
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+/* Formula Card */
+.formula-card {
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.formula-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.3rem;
+}
+
+.formula-subtext {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 0.3rem;
+}
+
+.formula-hint {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+/* Formula Box */
+.formula-box {
+  font-size: 1.2rem;
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.blurred {
+  filter: blur(7px);
+  color: transparent;
+  user-select: none;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+.revealed {
+  color: #0f172a;
+  filter: none;
+}
+
+/* Reveal Button */
+.reveal-btn {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.reveal-btn:hover {
+  background-color: #1e40af;
+}
+
+/* Divider */
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 1.5rem 0;
+}
+
+/* Rating Section */
+.rating-section p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 0.7rem;
+}
+
+/* Stars Container */
+.star-rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Timer Progress */
+.timer-progress {
+  width: 300px;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.timer-bar {
+  height: 100%;
+  background-color: #2563eb;
+  transition: width 1s linear;
+}
+.formula-hint {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 1.2rem;
+  background: #f8fafc;
+  border-left: 3px solid #2563eb;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.formula-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #475569;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

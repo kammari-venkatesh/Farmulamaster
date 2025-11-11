@@ -1,0 +1,167 @@
+body {
+  background-color: #f9fafc;
+  font-family: "Inter", sans-serif;
+}
+
+/* Container */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 3rem;
+}
+
+/* Timer Section */
+.timer-section {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+
+.timer-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  padding: 0 0.3rem;
+}
+
+.timer-labels p {
+  font-size: 0.9rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+.timer-labels span {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Timer Bar */
+.timer-progress {
+  width: 100%;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.timer-bar {
+  height: 100%;
+  background-color: #2563eb;
+  transition: width 1s linear;
+}
+
+/* Quiz Card */
+.quiz-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: left;
+}
+
+.question-count {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+
+.question-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Options */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.option:hover {
+  border-color: #2563eb;
+}
+
+.option input {
+  display: none;
+}
+
+.option-circle {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  margin-right: 0.8rem;
+  transition: 0.3s;
+  position: relative;
+}
+
+.option input:checked + .option-circle::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+}
+
+.option-text {
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.option-selected {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #1e40af;
+}
+
+/* Loading */
+.loading-text {
+  text-align: center;
+  color: #475569;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 4rem;
+}

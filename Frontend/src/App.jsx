@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Homepage";
 import FormulaRatingPage from "./pages/FormulaRatingPage";
 import QuizQuestionPage from "./pages/QuizQuestionPage";
 import AnswerResultPage from "./pages/AnswerResultPage";
 import FinalReviewPage from "./pages/FinalReviewPage";
-import Navbar from "./components/Navbar";
+import Navbar from "./Components/Navbar";
 import "./index.css";
 
 const App = () => {
